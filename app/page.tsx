@@ -42,31 +42,33 @@ export default function Home() {
 
       <header className="hero" id="top">
         <div className="wrap hero-inner">
-          <span className="eyebrow line">АВТОМАТИЗАЦИЯ БУХГАЛТЕРИИ · 1С + ERP · 2026</span>
-          <h1>Сначала доказать эффект.<br/><em>Потом масштабировать.</em></h1>
-          <p className="lead">Берём один участок с ручной рутиной, измеряем стоимость в часах и деньгах, проверяем на коротком пилоте — и только затем разворачиваем на всю бухгалтерию.</p>
+          <span className="eyebrow line">АВТОМАТИЗАЦИЯ БУХГАЛТЕРИИ · ТИЗЕР ДЛЯ РУКОВОДСТВА</span>
+          <h1>Сколько нам стоит ручная работа<br/><em>бухгалтерии?</em></h1>
+          <p className="hero-answer">Честный ответ: неизвестно.</p>
+          <p className="lead">30 бухгалтеров работают в 1С, ERP, Excel и почте. Часть этой работы — ввод данных, которые машина обрабатывает за секунды.</p>
           <div className="hero-actions">
-            <a className="btn primary" href="#decision">Что просим утвердить сегодня</a>
-            <a className="btn text" href="#problem">Где теряется время <span>↓</span></a>
+            <a className="btn primary" href="#problem">Где скрыта ручная работа</a>
+            <a className="btn text" href="#problem">Смотреть проблему <span>↓</span></a>
           </div>
-          <div className="proof-grid">
-            <div><strong>30</strong><span>бухгалтеров</span></div>
-            <div><strong>Пилот</strong><span>за 9 недель</span></div>
-            <div><strong>2</strong><span>контрольные<br/>точки</span></div>
-            <div><strong>Измеримый</strong><span>ROI</span></div>
+          <div className="proof-grid pain-stats">
+            <div><strong>50–65 млн ₽</strong><span>годовой ФОТ бухгалтерии</span></div>
+            <div><strong>30</strong><span>бухгалтеров<br/>в контуре</span></div>
+            <div><strong>4 среды</strong><span>1С · ERP · Excel · почта</span></div>
+            <div><strong>Неизвестно</strong><span>какая доля уходит на рутину</span></div>
           </div>
         </div>
       </header>
 
       <section className="section paper" id="problem">
         <div className="wrap">
-          <div className="section-head"><span className="eyebrow">01 · ПРОБЛЕМА</span><h2>Где теряется время <em>ваших бухгалтеров</em></h2><p>Каждый день — часы ручной рутины, стоимость которой сегодня никто не измеряет.</p></div>
+          <div className="section-head"><span className="eyebrow">01 · ЧТО ПРОИСХОДИТ СЕЙЧАС</span><h2>Ручная работа распределена между системами — <em>и остаётся невидимой</em></h2><p>Каждый день — часы рутины. Но её объём, стоимость и влияние на рост сегодня не измерены.</p></div>
           <div className="problem-grid">
             <article><span>01</span><h3>Документы вручную</h3><p>Счета, акты, УПД, ТОРГ-12 вводятся с бумаги и сканов. Часы уходят на ввод и форматирование.</p></article>
             <article><span>02</span><h3>Труд размазан по системам</h3><p>1С, ERP, Excel, почта, ЭДО — целостной картины загрузки нет ни у кого.</p></article>
             <article><span>03</span><h3>Стоимость рутины неизвестна</h3><p>Сколько часов и рублей съедают ввод, сверки и требования ФНС — не измерено.</p></article>
             <article><span>04</span><h3>Барьер роста</h3><p>Больше документооборота — нужен больший штат. Масштабирование упирается в людей.</p></article>
           </div>
+          <div className="pain-conclusion"><p>Главная проблема — не отсутствие технологии. Мы не знаем фактическую стоимость ручной работы и поэтому не можем обоснованно выбрать, что менять первым.</p><a href="#target">Перейти от неизвестности к измеримой цели <span>→</span></a></div>
         </div>
       </section>
 
