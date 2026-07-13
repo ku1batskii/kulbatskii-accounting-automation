@@ -6,7 +6,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
   const host = requestHeaders.get("host") ?? "localhost:3000";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const ogImage = `${protocol}://${host}/og.png`;
+  const ogImage = `${protocol}://${host}/og-no-glow-v2.png`;
   const title = "Автоматизация бухгалтерии · KULBATSKII";
   const description = "Управляемая программа автоматизации бухгалтерии: пилот, KPI, экономика и дорожная карта на 12 месяцев.";
 
