@@ -43,18 +43,22 @@ export default function Home() {
       <header className="hero" id="top">
         <div className="wrap hero-inner">
           <span className="eyebrow line">АВТОМАТИЗАЦИЯ БУХГАЛТЕРИИ · ТИЗЕР ДЛЯ РУКОВОДСТВА</span>
-          <h1>Сколько нам стоит ручная работа<br/><em>бухгалтерии?</em></h1>
-          <p className="hero-answer">Честный ответ: неизвестно.</p>
-          <p className="lead">30 бухгалтеров работают в 1С, ERP, Excel и почте. Часть этой работы — ввод данных, которые машина обрабатывает за секунды.</p>
-          <div className="hero-actions">
-            <a className="btn primary" href="#problem">Где скрыта ручная работа</a>
-            <a className="btn text" href="#problem">Смотреть проблему <span>↓</span></a>
+          <div className="hero-main">
+            <div className="hero-question">
+              <h1>Сколько стоит ручная работа<br/><em>вашей бухгалтерии?</em></h1>
+              <p className="lead">30 бухгалтеров работают в 1С, ERP, Excel и почте. Часть этой работы — ввод данных, которые машина обрабатывает за секунды.</p>
+            </div>
+            <div className="hero-verdict">
+              <span>ЧЕСТНЫЙ ОТВЕТ</span>
+              <strong>Неизвестно.</strong>
+              <p>Не измерено, какая доля ФОТ уходит на ввод, сверки, поиск документов и исправление ошибок.</p>
+              <a href="#problem">Разобрать проблему <span>↓</span></a>
+            </div>
           </div>
-          <div className="proof-grid pain-stats">
-            <div><strong>50–65 млн ₽</strong><span>годовой ФОТ бухгалтерии</span></div>
-            <div><strong>30</strong><span>бухгалтеров<br/>в контуре</span></div>
-            <div><strong>4 среды</strong><span>1С · ERP · Excel · почта</span></div>
-            <div><strong>Неизвестно</strong><span>какая доля уходит на рутину</span></div>
+          <div className="hero-evidence" aria-label="Масштаб проблемы">
+            <article><strong>50–65 млн ₽</strong><span>годовой ФОТ бухгалтерии</span></article>
+            <article><strong>30</strong><span>бухгалтеров в контуре</span></article>
+            <article><strong>4 среды</strong><span>1С · ERP · Excel · почта</span></article>
           </div>
         </div>
       </header>
