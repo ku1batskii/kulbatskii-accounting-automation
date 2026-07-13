@@ -43,17 +43,9 @@ export default function Home() {
       <header className="hero" id="top">
         <div className="wrap hero-inner">
           <span className="eyebrow line">АВТОМАТИЗАЦИЯ БУХГАЛТЕРИИ · ТИЗЕР ДЛЯ РУКОВОДСТВА</span>
-          <div className="hero-main">
-            <div className="hero-question">
-              <h1>Сколько стоит ручная работа<br/><em>вашей бухгалтерии?</em></h1>
-              <p className="lead">30 бухгалтеров работают в 1С, ERP, Excel и почте. Часть этой работы — ввод данных, которые машина обрабатывает за секунды.</p>
-            </div>
-            <div className="hero-verdict">
-              <span>ЧЕСТНЫЙ ОТВЕТ</span>
-              <strong>Неизвестно.</strong>
-              <p>Не измерено, какая доля ФОТ уходит на ввод, сверки, поиск документов и исправление ошибок.</p>
-              <a href="#problem">Разобрать проблему <span>↓</span></a>
-            </div>
+          <div className="hero-copy">
+            <h1>Сколько стоит ручная работа<br/>вашей бухгалтерии?<em>Честный ответ: неизвестно.</em></h1>
+            <p className="lead">30 бухгалтеров работают в 1С, ERP, Excel и почте. Не измерено, какая доля ФОТ уходит на ввод данных, сверки, поиск документов и исправление ошибок.</p>
           </div>
           <div className="hero-evidence" aria-label="Масштаб проблемы">
             <article><strong>50–65 млн ₽</strong><span>годовой ФОТ бухгалтерии</span></article>
