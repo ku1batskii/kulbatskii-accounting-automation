@@ -13,7 +13,7 @@ export default function Home() {
       <nav className="topbar" aria-label="Навигация по презентации">
         <a className="brand" href="#top"><strong>KULBATSKII</strong><span>АВТОМАТИЗАЦИЯ УЧЁТА</span></a>
         <div className="nav-links"><a href="#pilot">Пилот</a><a href="#economy">Экономика</a><a href="#roadmap">План</a></div>
-        <a className="nav-cta" href="#decision">К решению <span>↓</span></a>
+        <a className="nav-cta" href="#decision">Что утвердить <span>↓</span></a>
       </nav>
 
       <header className="hero" id="top">
@@ -22,7 +22,7 @@ export default function Home() {
           <h1>Убираем рутину<br/><em>из бухгалтерии</em></h1>
           <p className="lead">Не покупка «робота», а управляемая программа изменений: измерить процессы, проверить эффект на малом пилоте и масштабировать только подтверждённый результат.</p>
           <div className="hero-actions">
-            <a className="btn primary" href="#decision">Какое решение требуется</a>
+            <a className="btn primary" href="#decision">Что утвердить сейчас</a>
             <a className="btn text" href="#target">Смотреть схему <span>↓</span></a>
           </div>
           <div className="proof-grid">
@@ -49,11 +49,11 @@ export default function Home() {
             <div className="flow-card"><span>03 · ЧЕЛОВЕК</span><h3>Подтвердить и решить</h3><p>Контроль · исключения · методология</p></div>
           </div>
           <div className="target-grid">
-            <article><strong>−30…40%</strong><p>времени на рутинные операции</p></article>
-            <article><strong>≥80%</strong><p>первичных документов создаются без ручного ввода</p></article>
-            <article><strong>−2…3 дня</strong><p>к сроку закрытия месяца</p></article>
+            <article><strong>−25…40%</strong><p>времени на рутинные операции</p></article>
+            <article><strong>60–80%</strong><p>первичных документов создаются без ручного ввода</p></article>
+            <article><strong>−1…3 дня</strong><p>к сроку закрытия месяца</p></article>
           </div>
-          <p className="caveat">Целевые значения — ориентиры. Baseline и реалистичный потенциал фиксируются по данным Фазы 1.</p>
+          <p className="caveat">Целевые значения — ориентиры. Базовый замер и реалистичный потенциал фиксируются по данным Фазы 1.</p>
         </div>
       </section>
 
@@ -62,18 +62,19 @@ export default function Home() {
           <div className="section-head"><span className="eyebrow">02 · ЛОГИКА РЕШЕНИЯ</span><h2>Автоматизируем <em>снизу вверх</em></h2><p>Каждый следующий уровень подключается только если более простой способ не решает задачу.</p></div>
           <div className="tech-ladder">
             <TechStep n="01" title="Устранить операцию" text="Убрать лишнее согласование, дублирование и ручной перенос." />
-            <TechStep n="02" title="Штатные функции 1С / ERP" text="ЭДО, DirectBank, сверки, требования ФНС, регламентные задания." />
-            <TechStep n="03" title="API и интеграции" text="Надёжный обмен между системами без участия пользователя." />
-            <TechStep n="04" title="OCR / IDP и workflow" text="Распознавание документов, маршруты и контроль статусов." tone="highlight" />
-            <TechStep n="05" title="RPA" text="Только для стабильной межсистемной рутины без доступного API." />
-            <TechStep n="06" title="ИИ / LLM" text="Ассистенты, поиск, черновики и аномалии — с проверкой человеком." />
+            <TechStep n="02" title="Стандартизировать процесс" text="Закрепить единые правила, роли, справочники и критерии исключений." />
+            <TechStep n="03" title="Штатные функции 1С / ERP" text="ЭДО, DirectBank, сверки, требования ФНС, регламентные задания." />
+            <TechStep n="04" title="API и интеграции" text="Надёжный обмен между системами без участия пользователя." />
+            <TechStep n="05" title="OCR / IDP и маршруты" text="Распознавание документов, согласование и контроль статусов." tone="highlight" />
+            <TechStep n="06" title="RPA" text="Только для стабильной межсистемной рутины без доступного API." />
+            <TechStep n="07" title="ИИ / LLM" text="Ассистенты, поиск, черновики и аномалии — с проверкой человеком." />
           </div>
         </div>
       </section>
 
       <section className="section paper" id="pilot">
         <div className="wrap">
-          <div className="section-head"><span className="eyebrow">03 · РЕКОМЕНДУЕМЫЙ ПИЛОТ</span><h2>Первичка + ЭДО: <em>узкий и измеримый контур</em></h2><p>Один участок, один тип документа, 3–5 бухгалтеров, 8 недель и обязательное сравнение с baseline.</p></div>
+          <div className="section-head"><span className="eyebrow">03 · РЕКОМЕНДУЕМЫЙ ПИЛОТ</span><h2>Первичка + ЭДО: <em>узкий и измеримый контур</em></h2><p>Один участок, один тип документа, 3–5 бухгалтеров, 9 недель и обязательное сравнение с базовым замером.</p></div>
           <div className="pilot-layout">
             <div className="pilot-main">
               <div className="badge">КАНДИДАТ №1</div>
@@ -112,9 +113,9 @@ export default function Home() {
           <div className="section-head"><span className="eyebrow">05 · МЕТРИКИ ПИЛОТА</span><h2>Пять сигналов, что решение <em>работает</em></h2></div>
           <div className="kpi-grid">
             <article><span>01</span><h3>Время</h3><strong>↓</strong><p>медиана и P90 времени на документ</p></article>
-            <article><span>02</span><h3>Автоматизация</h3><strong>≥80%</strong><p>без ручных исправлений</p></article>
+            <article><span>02</span><h3>Автоматизация</h3><strong>70–80%</strong><p>целевой диапазон без ручных исправлений</p></article>
             <article><span>03</span><h3>Качество</h3><strong>0</strong><p>критических ошибок учёта</p></article>
-            <article><span>04</span><h3>Принятие</h3><strong>↑</strong><p>adoption и оценка пользователей</p></article>
+            <article><span>04</span><h3>Принятие</h3><strong>↑</strong><p>использование решения и оценка пользователей</p></article>
             <article><span>05</span><h3>Экономика</h3><strong>+</strong><p>эффект после полной стоимости владения</p></article>
           </div>
         </div>
@@ -129,16 +130,16 @@ export default function Home() {
             <article className="featured"><span>БАЗОВЫЙ</span><strong>3,4 FTE</strong><p>≈ 6,05 млн ₽ валовой мощности / год</p><small>Рабочий ориентир для проверки</small></article>
             <article><span>ВЫСОКИЙ</span><strong>6,7 FTE</strong><p>≈ 12,03 млн ₽ валовой мощности / год</p></article>
           </div>
-          <p className="caveat dark">Сценарии иллюстративные, не финансовое обещание. Финмодель уточняется после baseline, демо вендоров и замера полной TCO.</p>
+          <p className="caveat dark">Сценарии иллюстративные, не финансовое обещание. Финмодель уточняется после базового замера, демо вендоров и расчёта полной стоимости владения.</p>
         </div>
       </section>
 
       <section className="section paper" id="roadmap">
         <div className="wrap">
-          <div className="section-head"><span className="eyebrow">07 · ДОРОЖНАЯ КАРТА</span><h2>12 месяцев. <em>Два решения о продолжении.</em></h2><p>До Gate 1 — в основном время команды. До Gate 2 — только ограниченный пилот. Полный бюджет — после доказанного эффекта.</p></div>
+          <div className="section-head"><span className="eyebrow">07 · ДОРОЖНАЯ КАРТА</span><h2>12 месяцев. <em>Два решения о продолжении.</em></h2><p>До Gate 1 — без закупки новых лицензий: основные затраты — время команды. До Gate 2 — только ограниченный пилот. Полный бюджет — после доказанного эффекта.</p></div>
           <div className="timeline">
             <article><div className="time"><span>МЕСЯЦ 1</span><b>01</b></div><div><h3>Мандат и измерение</h3><p>Спонсор, команда, юридическое оформление, запуск сбора данных.</p></div></article>
-            <article><div className="time"><span>МЕСЯЦ 2</span><b>02</b></div><div><h3>Baseline и выбор пилота</h3><p>Карта процессов, топ‑10 операций, shortlist решений, финмодель.</p></div></article>
+            <article><div className="time"><span>МЕСЯЦ 2</span><b>02</b></div><div><h3>Базовый замер и выбор пилота</h3><p>Карта процессов, топ‑10 операций, короткий список решений, финмодель.</p></div></article>
             <article className="gate"><div className="time"><span>GATE 1</span><b>G1</b></div><div><h3>Разрешить пилот</h3><p>Утвердить контур, бюджет, метрики и ответственных.</p></div></article>
             <article><div className="time"><span>МЕСЯЦЫ 3–5</span><b>03</b></div><div><h3>Пилот</h3><p>3–5 пользователей, еженедельные замеры, обучение и корректировки.</p></div></article>
             <article className="gate"><div className="time"><span>GATE 2</span><b>G2</b></div><div><h3>Решить по масштабу</h3><p>План/факт, фактический ROI, инциденты и обратная связь.</p></div></article>
@@ -173,17 +174,17 @@ export default function Home() {
 
       <section className="decision" id="decision">
         <div className="wrap decision-grid">
-          <div><span className="eyebrow">РЕШЕНИЕ GATE 1</span><h2>Разрешить <em>обследование</em> и подготовку пилота</h2><p>На первом этапе не выбираем платформу навсегда. Получаем объективную карту рутины, подтверждённый приоритет и финансово обоснованный план теста.</p></div>
+          <div><span className="eyebrow">СТАРТ ПРОЕКТА · ДО GATE 1</span><h2>Разрешить <em>обследование</em> и подготовку пилота</h2><p>На первом этапе не выбираем платформу навсегда. Получаем объективную карту рутины, подтверждённый приоритет и финансово обоснованный план теста.</p></div>
           <div className="decision-card">
             <span>УТВЕРДИТЬ СЕЙЧАС</span>
-            <ol><li>Спонсора и руководителя проекта</li><li>Сбор baseline в течение 6 недель</li><li>Дату Gate 1 в конце месяца 2</li></ol>
+            <ol><li>Спонсора и руководителя проекта</li><li>Базовый замер в течение 6 недель</li><li>Дату Gate 1 в конце месяца 2</li></ol>
             <a className="btn primary" href="mailto:apk181818@gmail.com?subject=Обсудить%20пилот%20автоматизации%20бухгалтерии">Обсудить первый этап</a>
           </div>
         </div>
       </section>
 
       <footer><div className="wrap"><div className="brand"><strong>KULBATSKII</strong><span>ЦИФРОВЫЕ ИНСТРУМЕНТЫ</span></div><p>Концепция автоматизации рутинных операций бухгалтерии · 2026</p><a href="#top">Наверх ↑</a></div></footer>
-      <div className="mobile-nav"><a href="#target">Цель</a><a href="#pilot">Пилот</a><a href="#roadmap">План</a><a className="active" href="#decision">Решение</a></div>
+      <nav className="mobile-nav" aria-label="Быстрая навигация"><a href="#target">Цель</a><a href="#pilot">Пилот</a><a href="#roadmap">План</a><a className="decision-link" href="#decision">Утвердить</a></nav>
     </main>
   );
 }
