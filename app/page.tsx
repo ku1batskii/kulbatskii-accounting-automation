@@ -140,11 +140,11 @@ export default function Home() {
       <section className="section paper" id="pilot">
         <div className="wrap">
           <div className="section-head"><span className="eyebrow">07 · РЕКОМЕНДУЕМЫЙ ПИЛОТ</span><h2>Предварительный <em>кандидат</em></h2></div>
-          <div className="candidate-grid">
-            <article className="primary-candidate"><span>ОСНОВНОЙ</span><h3>Ввод первички + ЭДО</h3><p>Самый массовый ручной труд: большой поток, повторяемые типы документов, измеримый результат. Публичный кейс: ввод 50 счетов — с 2,5–4 часов до ~25 минут.</p></article>
-            <article><span>РЕЗЕРВНЫЙ</span><h3>Банк или сверки</h3><p>Ежедневный объём и стабильные правила сопоставления. Окончательный выбор — только по данным обследования.</p></article>
+          <div className="candidate-grid pilot-candidates">
+            <article className="primary-candidate"><span>ОСНОВНОЙ КАНДИДАТ</span><h3>Ввод первички + ЭДО</h3><p>Самый массовый ручной труд: большой поток, повторяемые типы документов, измеримый результат. Публичный кейс: ввод 50 счетов — с 2,5–4 часов до ~25 минут.</p><strong>2,5–4 ч <i>→</i> ~25 мин</strong></article>
+            <article className="reserve-candidate"><span>РЕЗЕРВНЫЙ КАНДИДАТ</span><h3>Банк или сверки</h3><p>Ежедневный объём и стабильные правила сопоставления. Окончательный выбор — только по данным обследования.</p></article>
           </div>
-          <p className="pilot-scope">1 процесс · 1 участок · 3–5 бухгалтеров · 9 недель · охватывает полное закрытие месяца · человек подтверждает каждый документ</p>
+          <div className="pilot-scope" aria-label="Контур пилота"><span><b>1</b> процесс</span><span><b>1</b> участок</span><span><b>3–5</b> бухгалтеров</span><span><b>9</b> недель</span><span>полное закрытие месяца</span><span>подтверждение человеком</span></div>
           <p className="quick-win">Параллельно и без бюджета пилота: перевод контрагентов на ЭДО и включение бесплатных штатных сервисов 1С — сверка, DirectBank, интерфейс требований ФНС.</p>
         </div>
       </section>
@@ -167,7 +167,7 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head"><span className="eyebrow">09 · ЭКОНОМИКА</span><h2>Три уровня эффекта. <em>Часы ≠ деньги, пока не реализованы.</em></h2></div>
           <div className="economy-layout">
-            <div className="economy-table-wrap"><table className="economy-table"><thead><tr><th>Сценарий</th><th>Снижение рутины</th><th>Доля</th><th>FTE-экв.</th><th>Мощность / год</th></tr></thead><tbody><tr><td>Консервативный</td><td>25%</td><td>25%</td><td>1,3</td><td>2,4 млн ₽</td></tr><tr><td>Базовый</td><td>40%</td><td>35%</td><td>3,4</td><td>6,0 млн ₽</td></tr><tr><td>Высокий</td><td>55%</td><td>45%</td><td>6,7</td><td>12,0 млн ₽</td></tr></tbody></table><p>Иллюстрация чувствительности при полной стоимости сотрудника 150 тыс. ₽/мес. Не прогноз: пересчитывается на данных обследования (Gate 1) и пилота (Gate 2).</p></div>
+            <div className="economy-table-wrap"><table className="economy-table"><thead><tr><th>Сценарий</th><th>Снижение рутины</th><th>Доля</th><th>FTE-экв.</th><th>Мощность / год</th></tr></thead><tbody><tr><td data-label="Сценарий">Консервативный</td><td data-label="Снижение рутины">25%</td><td data-label="Доля">25%</td><td data-label="FTE-экв.">1,3</td><td data-label="Мощность / год">2,4 млн ₽</td></tr><tr className="base-scenario"><td data-label="Сценарий">Базовый <span>рабочий ориентир</span></td><td data-label="Снижение рутины">40%</td><td data-label="Доля">35%</td><td data-label="FTE-экв.">3,4</td><td data-label="Мощность / год">6,0 млн ₽</td></tr><tr><td data-label="Сценарий">Высокий</td><td data-label="Снижение рутины">55%</td><td data-label="Доля">45%</td><td data-label="FTE-экв.">6,7</td><td data-label="Мощность / год">12,0 млн ₽</td></tr></tbody></table><p>Иллюстрация чувствительности при полной стоимости сотрудника 150 тыс. ₽/мес. Не прогноз: пересчитывается на данных обследования (Gate 1) и пилота (Gate 2).</p></div>
             <div className="effect-levels"><article><span>УРОВЕНЬ 1</span><h3>Операционный</h3><p>часы, скорость, ошибки</p></article><article><span>УРОВЕНЬ 2</span><h3>Мощность</h3><p>FTE-эквивалент высвобожденного времени</p></article><article><span>УРОВЕНЬ 3</span><h3>Реализованный</h3><p>найм, переработки, потери. При монетизации 50%: базовый ≈ 3,0 млн ₽/год</p></article></div>
           </div>
         </div>
@@ -176,7 +176,7 @@ export default function Home() {
       <section className="section" id="roadmap">
         <div className="wrap">
           <div className="section-head"><span className="eyebrow">10 · ДОРОЖНАЯ КАРТА</span><h2>12 месяцев, <em>два решения</em></h2></div>
-          <div className="phase-strip">{phases.map(([phase,time]) => <div className={phase === "G1" || phase === "G2" ? "gate-phase" : ""} key={phase}><b>{phase}</b><span>{time}</span></div>)}</div>
+          <div className="phase-strip" aria-label="Этапы дорожной карты">{phases.map(([phase,time], index) => <div className={phase === "G1" || phase === "G2" ? "gate-phase" : ""} key={phase}><small>{String(index + 1).padStart(2,"0")}</small><b>{phase}</b><span>{time || "КОНТРОЛЬНАЯ ТОЧКА"}</span></div>)}</div>
           <div className="gate-grid"><article><span>GATE 1 · КОНЕЦ 9-Й НЕДЕЛИ</span><h3>Одобрение пилота</h3><p>На фактических данных обследования. До этой точки внешние расходы ≈ 0.</p></article><article><span>GATE 2 · СЕРЕДИНА 5-ГО МЕСЯЦА</span><h3>Решение о масштабировании</h3><p>На цифрах пилота. Волны: первичка → банк/сверки → RPA → ИИ.</p></article></div>
         </div>
       </section>
