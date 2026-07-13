@@ -1,5 +1,5 @@
-const TechStep = ({ n, title, text, tone = "" }: { n: string; title: string; text: string; tone?: string }) => (
-  <div className={`tech-step ${tone}`}>
+const TechStep = ({ n, title, text }: { n: string; title: string; text: string }) => (
+  <div className="tech-step">
     <span className="tech-num">{n}</span>
     <div><h3>{title}</h3><p>{text}</p></div>
   </div>
@@ -65,7 +65,7 @@ export default function Home() {
             <TechStep n="02" title="Стандартизировать процесс" text="Закрепить единые правила, роли, справочники и критерии исключений." />
             <TechStep n="03" title="Штатные функции 1С / ERP" text="ЭДО, DirectBank, сверки, требования ФНС, регламентные задания." />
             <TechStep n="04" title="API и интеграции" text="Надёжный обмен между системами без участия пользователя." />
-            <TechStep n="05" title="OCR / IDP и маршруты" text="Распознавание документов, согласование и контроль статусов." tone="highlight" />
+            <TechStep n="05" title="OCR / IDP и маршруты" text="Распознавание документов, согласование и контроль статусов." />
             <TechStep n="06" title="RPA" text="Только для стабильной межсистемной рутины без доступного API." />
             <TechStep n="07" title="ИИ / LLM" text="Ассистенты, поиск, черновики и аномалии — с проверкой человеком." />
           </div>
