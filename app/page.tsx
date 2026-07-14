@@ -1,252 +1,157 @@
-const TechStep = ({ n, title, text, cost }: { n: string; title: string; text: string; cost: string }) => (
-  <div className="tech-step">
-    <span className="tech-num">{n}</span>
-    <div><h3>{title}</h3>{text && <p>{text}</p>}</div>
-    <small>{cost}</small>
-  </div>
-);
+const auditSteps = [
+  ["01", "Что исследуем?", "Согласуем процессы, владельцев, определения показателей и доступ к данным.", "Единый контур аудита"],
+  ["02", "Как работа выполняется фактически?", "Изучаем журналы 1С, проводим интервью и наблюдаем действия вне системы только с добровольцами.", "Подтверждённая картина текущей работы"],
+  ["03", "Где возникает ручная нагрузка?", "Связываем операции, ожидания, возвраты и исправления в единый маршрут процесса.", "Фактическая карта ручных переходов"],
+  ["04", "Что сильнее всего влияет на маржу?", "Сопоставляем объёмы, время, ошибки и повторную работу.", "Стоимость рутины в AED по процессам"],
+  ["05", "Что имеет смысл менять первым?", "Сравниваем потенциальный эффект, сложность, качество данных и риск.", "Кандидат и критерии проверки"],
+];
 
 const processes = [
-  ["01", "Первичка", "Инвойсы, счета и акты — распознавание и автосоздание в 1С"],
-  ["02", "E-invoicing", "Подготовка клиентского контура к обязательному мандату 2027"],
-  ["03", "Банк", "Выписки, автосопоставление платежей, проводки"],
-  ["04", "Сверки", "Автосверка инвойсов и взаиморасчётов"],
-  ["05", "Запросы FTA", "Автоподбор документов и контроль сроков ответа"],
-  ["06", "VAT и закрытие", "Мониторинг документов, автопроверки и отчётность"],
+  ["01", "Первичные документы", "инвойсы · счета · акты"],
+  ["02", "E-invoicing", "клиентский контур"],
+  ["03", "Банк", "выписки · платежи · проводки"],
+  ["04", "Сверки", "инвойсы · взаиморасчёты"],
+  ["05", "Запросы FTA", "документы · сроки ответа"],
+  ["06", "VAT и закрытие", "контроль · отчётность"],
 ];
 
-const weights = [
-  ["20%", "Объём операций"],
-  ["20%", "Трудоёмкость"],
-  ["15%", "Стандартизированность правил"],
-  ["10%", "Качество исходных данных"],
-  ["10%", "Измеримость эффекта"],
-  ["10%", "Стабильность процесса"],
-  ["15%", "Риск · интеграция · владелец"],
-];
-
-const phases = [
-  ["АУДИТ", "8 НЕД · AED 45 ТЫС."],
-  ["G1", ""], ["ПИЛОТ", "9 НЕД"], ["G2", ""],
-  ["МАСШТАБИРОВАНИЕ ВОЛНАМИ", "МЕС 5–12"],
-];
+const pilotMetrics = ["Время на документ", "Операции без ручного ввода", "Точность критичных полей", "Возвраты и ошибки", "Стоимость обработки", "Критические инциденты"];
+const controls = ["UAE PDPL", "Обезличивание", "Без содержимого документов", "Только добровольцы", "Подтверждение человеком", "ИИ не действует самостоятельно"];
 
 export default function Home() {
   return (
     <main>
       <nav className="topbar" aria-label="Навигация по презентации">
-        <a className="brand" href="#top"><strong>KULBATSKII</strong><span>АВТОМАТИЗАЦИЯ БУХГАЛТЕРИИ</span></a>
-        <div className="nav-links"><a href="#audit">Аудит</a><a href="#pilot">Пилот</a><a href="#roadmap">План</a></div>
-        <a className="nav-cta" href="#decision">Запустить аудит <span>↓</span></a>
+        <a className="brand" href="#top"><strong>KULBATSKII</strong><span>GULF BRIDGE</span></a>
+        <div className="nav-links"><a href="#offer">Аудит</a><a href="#route">Маршрут</a><a href="#pilot">Пилот</a><a href="#economy">Экономика</a></div>
+        <a className="nav-cta" href="#decision">Зафиксировать старт <span>↓</span></a>
       </nav>
 
-      <header className="hero" id="top">
+      <header className="hero screen" id="top">
         <div className="wrap hero-inner">
-          <span className="eyebrow line">АВТОМАТИЗАЦИЯ БУХГАЛТЕРИИ · GULF BRIDGE · ТИЗЕР</span>
-          <div className="hero-copy">
-            <h1>Сколько нам стоит ручная работа<br/>бухгалтерии?<em>Честный ответ: неизвестно.</em></h1>
-            <p className="lead">30 бухгалтеров ведут учёт 300+ клиентских компаний и наш собственный — в 1С, Excel и почте. Каждый час ручной рутины — минус маржа на каждом клиенте и потолок роста портфеля.</p>
+          <span className="eyebrow line">АУДИТ СТОИМОСТИ РУЧНЫХ ОПЕРАЦИЙ</span>
+          <div className="hero-statement">
+            <h1>Рост упирается<br/>в ручную работу.<em>Но мы ещё не знаем — в какую именно.</em></h1>
+            <p>30 бухгалтеров ведут 300+ клиентских компаний. Прежде чем покупать автоматизацию, нужно определить стоимость ручных операций и процесс, который целесообразно менять первым.</p>
           </div>
-          <div className="hero-evidence" aria-label="Масштаб проблемы">
-            <article><strong>~10 юрлиц</strong><span>на бухгалтера — потолок ручной модели</span></article>
-            <article><strong>2027</strong><span>e-invoicing обязателен в ОАЭ для всех наших клиентов</span></article>
-            <article><strong>&lt;1% ФОТ</strong><span>цена аудита; при продолжении зачёт в пилот на 100%</span></article>
-          </div>
-          <div className="hero-ask"><p>Просим <b>20 минут</b>, чтобы показать план: как узнать цифру, что войдёт в пилот и почему каждый следующий шаг оплачивается только после доказанного результата.</p><a href="#problem">Смотреть план <span>↓</span></a></div>
+          <div className="hero-close"><strong>Сначала измерить.<br/>Затем решить.</strong><a className="btn primary" href="#current">Получить точный ответ <span>↓</span></a></div>
         </div>
       </header>
 
-      <section className="section paper" id="problem">
-        <div className="wrap">
-          <div className="section-head"><span className="eyebrow">01 · ЧТО ПРОИСХОДИТ СЕЙЧАС</span><h2>Ручная модель достигла <em>предела ёмкости</em></h2><p>30 бухгалтеров ведут 300+ компаний. Каждая новая компания увеличивает ручную нагрузку, риск ошибки и зависимость от конкретных людей.</p></div>
-          <div className="problem-grid">
-            <article><span>01</span><h3>~10 юрлиц на человека</h3><p>300+ клиентских компаний уже распределены между 30 бухгалтерами — ручная модель близка к потолку.</p></article>
-            <article><span>02</span><h3>Рутина без ценника</h3><p>Ввод, сверки, поиск и исправления живут в 1С, Excel и почте. Их стоимость никто не измерял.</p></article>
-            <article><span>03</span><h3>Риск человека</h3><p>Ошибка на сотнях документов, двойной платёж или уход ключевого бухгалтера напрямую влияют на клиента.</p></article>
-            <article><span>04</span><h3>E-invoicing 2027</h3><p>Мандат затронет каждого нашего клиента. Войти в него лучше с управляемым автоматизированным контуром.</p></article>
-          </div>
-          <div className="pain-conclusion"><p>Главная проблема — не отсутствие технологии. Мы не знаем фактическую стоимость ручной работы и поэтому не можем обоснованно выбрать, что менять первым.</p><a href="#target">Перейти от неизвестности к измеримой цели <span>→</span></a></div>
-        </div>
-      </section>
-
-      <section className="section" id="target">
-        <div className="wrap">
-          <div className="section-head"><span className="eyebrow">02 · ЦЕЛЕВАЯ КАРТИНА</span><h2>Через <em>12 месяцев</em></h2><p>Цели — диапазонами, они фиксируются после замера. Абсолютных обещаний проект не даёт.</p></div>
-          <div className="target-layout">
-            <div className="target-shifts">
-              <article><h3>От ручного ввода — к подтверждению</h3><p>Документы создаются автоматически, человек контролирует</p></article>
-              <article><h3>От поиска ошибок — к автоконтролю</h3><p>Дубли, реквизиты, недостающие закрывающие ловит система</p></article>
-              <article><h3>От операций — к управляемому процессу</h3><p>Метрики по каждому участку, видимые узкие места</p></article>
-              <article><h3>От оператора — к контролёру и методологу</h3><p>Роль бухгалтера меняется, люди остаются</p></article>
-            </div>
-            <div className="target-metrics">
-              <article><strong>−25…40%</strong><p>ручного времени на рутинные операции</p></article>
-              <article><strong>60–80%</strong><p>первички — сквозная автообработка (STP)</p></article>
-              <article><strong>×2–3</strong><p>больше юрлиц на бухгалтера без найма</p></article>
+      <section className="section paper screen current" id="current">
+        <div className="wrap split-stage">
+          <div className="section-head"><span className="eyebrow">01 · ТЕКУЩИЙ КОНТУР</span><h2>Операции распределены.<br/><em>Стоимость — нет.</em></h2></div>
+          <div className="current-map">
+            <div className="system-chain"><span>1С</span><i>→</i><span>Excel</span><i>→</i><span>Почта</span><i>→</i><span>Ручное согласование</span></div>
+            <div className="current-facts">
+              <article><span>01</span><h3>Работа выходит за пределы системы</h3><p>Часть маршрута не видна в журналах и существует только в действиях сотрудников.</p></article>
+              <article><span>02</span><h3>Повторная работа не выделена</h3><p>Возвраты, поиск, исправления и ожидание не имеют отдельного ценника.</p></article>
+              <article><span>03</span><h3>Нагрузка зависит от людей</h3><p>Знания о нестандартных ситуациях остаются у отдельных специалистов.</p></article>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section paper" id="scope">
+      <section className="section screen urgency" id="urgency">
+        <div className="wrap urgency-layout">
+          <span className="year">2027</span>
+          <div><span className="eyebrow">02 · ПОЧЕМУ СЕЙЧАС</span><h2>E-invoicing становится обязательным в ОАЭ.</h2><p>Мандат затронет каждую клиентскую компанию. Войти в новый контур лучше с измеримыми процессами, а не с набором разрозненных автоматизаций.</p><a href="#offer">Определить готовность контура <span>→</span></a></div>
+        </div>
+      </section>
+
+      <section className="section screen offer" id="offer">
         <div className="wrap">
-          <div className="section-head"><span className="eyebrow">03 · ОБЪЁМ</span><h2>Карта <em>рутинных процессов</em></h2><p>Девять участков рутины. Автоматизируем не «бухгалтерию вообще», а конкретные из них — по данным.</p></div>
-          <div className="routine-grid">
-            {processes.map(([n,title,text]) => <article key={n}><span>{n}</span><h3>{title}</h3><p>{text}</p></article>)}
+          <span className="eyebrow">03 · ПРЕДЛОЖЕНИЕ</span>
+          <div className="offer-title"><h2><em>AED 45 000</em><br/>за управленческую определённость.</h2><p>8 недель · фиксированный контур · результат пригоден для решения руководства</p></div>
+          <div className="offer-results">
+            <article><span>01</span><h3>Стоимость</h3><p>Сколько AED в год поглощают ручные операции.</p></article>
+            <article><span>02</span><h3>Приоритет</h3><p>Какой процесс имеет лучшее соотношение эффекта, сложности и риска.</p></article>
+            <article><span>03</span><h3>Решение</h3><p>Стоит ли запускать пилот и по каким показателям его принимать.</p></article>
+          </div>
+          <div className="credit-statement"><p>При запуске пилота <strong>AED 45 000 полностью входят в его бюджет.</strong></p><b>Продолжение не обязательно.<br/>Обоснованное решение — обязательно.</b></div>
+        </div>
+      </section>
+
+      <section className="section paper screen scope" id="scope">
+        <div className="wrap">
+          <div className="section-head wide"><span className="eyebrow">04 · ОХВАТ</span><h2>Не «бухгалтерия вообще».<br/><em>Шесть измеримых участков.</em></h2></div>
+          <div className="process-contour">{processes.map(([n,title,text]) => <article key={n}><span>{n}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+          <p className="scope-note">Пилот выбирается из этого контура после измерения. Самый заметный процесс не обязательно окажется самым значимым.</p>
+        </div>
+      </section>
+
+      <section className="section paper screen route-section" id="route">
+        <div className="wrap">
+          <div className="section-head route-head"><span className="eyebrow">05 · МАРШРУТ АУДИТА</span><h2>Пять шагов<br/><em>от предположений к цифре.</em></h2></div>
+          <div className="audit-route" aria-label="Пять шагов аудита">
+            {auditSteps.map(([n,title,action,result]) => <article className="route-card" key={n}><span className="route-number">{n}</span><h3>{title}</h3><p>{action}</p><div><small>НА ВЫХОДЕ</small><strong>{result}</strong></div></article>)}
+          </div>
+          <div className="solution-order"><span>ПРИНЦИП ВЫБОРА РЕШЕНИЯ</span><p>Устранить операцию → стандартизировать → использовать штатные функции → интегрировать → автоматизировать.</p><b>ИИ и RPA — не первый ответ.</b></div>
+        </div>
+      </section>
+
+      <section className="section screen fork" id="fork">
+        <div className="wrap">
+          <div className="section-head wide"><span className="eyebrow">06 · РЕШЕНИЕ ПОСЛЕ АУДИТА</span><h2>Оба исхода<br/><em>сохраняют ценность.</em></h2></div>
+          <div className="fork-grid">
+            <article><span>01</span><h3>Остановиться</h3><p>Карта затрат, исходные показатели и заключение остаются у Gulf Bridge.</p><b>Обязательств продолжать нет.</b></article>
+            <article><span>02</span><h3>Проверить на пилоте</h3><p>AED 45 000 входят в бюджет следующего этапа.</p><b>Новое решение — после новых данных.</b></article>
           </div>
         </div>
       </section>
 
-      <section className="section" id="logic">
+      <section className="section screen pilot" id="pilot">
         <div className="wrap">
-          <div className="section-head"><span className="eyebrow">04 · ПРИНЦИП ВЫБОРА РЕШЕНИЯ</span><h2>Иерархия способов. <em>Технология — последний ответ.</em></h2></div>
-          <div className="tech-ladder">
-            <TechStep n="1" title="Устранить операцию" text="" cost="бесплатно" />
-            <TechStep n="2" title="Стандартизировать процесс" text="" cost="бесплатно" />
-            <TechStep n="3" title="Штатные функции 1С / ERP" text="" cost="почти без затрат" />
-            <TechStep n="4" title="API и интеграции" text="" cost="разово" />
-            <TechStep n="5" title="Распознавание документов (OCR)" text="" cost="подписка" />
-            <TechStep n="6" title="Workflow / маршруты" text="" cost="по месту" />
-            <TechStep n="7" title="RPA-роботы" text="" cost="посл. слой" />
-            <TechStep n="8" title="ИИ-ассистенты" text="" cost="упр. риск" />
-          </div>
-          <p className="privacy-note"><b>RPA</b> — последний интеграционный слой, а не первый способ. <b>ИИ</b> не имеет права проводить документы, платить и отвечать регуляторам без подтверждения человеком.</p>
-        </div>
-      </section>
-
-      <section className="section paper" id="measure">
-        <div className="wrap">
-          <div className="section-head"><span className="eyebrow">05 · КАК ИЗМЕРЯЕМ ТЕКУЩУЮ РАБОТУ</span><h2>Три источника данных. <em>Смотрим процессы, а не людей.</em></h2></div>
-          <div className="source-grid">
-            <article><span>ОСНОВНОЙ</span><h3>Журналы 1С</h3><p>Кто, когда и какой документ создал и провёл — за 3 месяца по всем 30 бухгалтерам. ETL → event log → process mining.</p></article>
-            <article><span>КОНТЕКСТ</span><h3>Интервью и наблюдение</h3><p>Валидация цифр по участкам: первичка, банк, сверки, VAT, закрытие и клиентская отчётность.</p></article>
-            <article><span>ОГРАНИЧЕННО</span><h3>Task mining</h3><p>5–7 добровольцев, 2 недели — только там, где логи не видят работу (Excel, почта, бумага).</p></article>
-          </div>
-          <div className="data-rules"><span>обезличивание до аналитики</span><span>без содержимого документов</span><span>трекинг только добровольцев</span><span>не для оценки сотрудников</span><span>UAE PDPL</span></div>
-        </div>
-      </section>
-
-      <section className="section" id="selection">
-        <div className="wrap">
-          <div className="section-head"><span className="eyebrow">06 · КАК ВЫБИРАЕТСЯ ПИЛОТ</span><h2>Пилот выбирают <em>данные, а не мнения.</em></h2></div>
-          <div className="selection-grid">
-            <div className="weights">{weights.map(([value,label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
-            <div className="method-card"><span>МЕТОД</span><p>Каждый процесс оценивается по 10-балльной шкале с весами. Побеждает лучшее соотношение <b>эффект × простота × низкий риск.</b></p><p>Пилот выбирают данные, а не мнения — в том числе не мнение инициатора проекта.</p></div>
+          <div className="section-head wide"><span className="eyebrow">07 · ПИЛОТ</span><h2>Не внедрение.<br/><em>Контролируемый эксперимент.</em></h2></div>
+          <div className="pilot-frame">
+            <div className="pilot-hypothesis"><span>РАБОЧАЯ ГИПОТЕЗА</span><h3>Первый кандидат — ввод первичных документов.</h3><p>Аудит может подтвердить его или заменить более сильным.</p></div>
+            <div className="pilot-params"><div><strong>1</strong><span>процесс</span></div><div><strong>1</strong><span>участок</span></div><div><strong>3–5</strong><span>бухгалтеров</span></div><div><strong>9</strong><span>недель</span></div><div><strong>HITL</strong><span>подтверждение человеком</span></div><div><strong>Δ</strong><span>сравнение с исходным периодом</span></div></div>
           </div>
         </div>
       </section>
 
-      <section className="section audit-product" id="audit">
+      <section className="section screen metrics" id="metrics">
         <div className="wrap">
-          <div className="section-head"><span className="eyebrow">07 · ПРОДУКТ</span><h2>Аудит стоимости <em>рутины</em></h2><p>За восемь недель превращаем невидимую ручную работу в управленческое решение: сколько она стоит, что менять первым и какой пилот действительно имеет смысл.</p></div>
-          <div className="audit-outcomes">
-            <article><span>01</span><h3>Цифра</h3><p>Стоимость рутины в AED/год — по процессам и участкам</p></article>
-            <article><span>02</span><h3>Приоритеты</h3><p>Какие 2–3 процесса автоматизировать первыми — матрица с весами</p></article>
-            <article><span>03</span><h3>Решение</h3><p>Обоснование пилота, критерии успеха, бюджетный предел и план запуска</p></article>
+          <div className="section-head wide"><span className="eyebrow">08 · КРИТЕРИИ</span><h2>Результат принимается<br/><em>не по впечатлению.</em></h2></div>
+          <div className="metric-list">{pilotMetrics.map((metric,index) => <div key={metric}><span>{String(index+1).padStart(2,"0")}</span><p>{metric}</p></div>)}</div>
+          <p className="pilot-decision"><strong>Цифры подтверждаются — масштабируем.</strong><span>Не подтверждаются — останавливаемся.</span></p>
+        </div>
+      </section>
+
+      <section className="section paper screen economy" id="economy">
+        <div className="wrap">
+          <div className="section-head wide"><span className="eyebrow">09 · КОММЕРЧЕСКИЙ СМЫСЛ</span><h2>Освобождённые часы ничего не стоят,<br/><em>пока не превращены в рост.</em></h2></div>
+          <div className="growth-chain"><div><span>01</span><b>Меньше ручных операций</b></div><i>→</i><div><span>02</span><b>Больше мощности команды</b></div><i>→</i><div><span>03</span><b>Больше клиентских компаний</b></div><i>→</i><div><span>04</span><b>Рост без пропорционального найма</b></div></div>
+          <div className="growth-hypothesis"><span>ПРОВЕРЯЕМЫЙ СЦЕНАРИЙ</span><strong>×2–3</strong><p>Увеличить число обслуживаемых компаний на бухгалтера без пропорционального расширения команды. Это гипотеза, не прогноз.</p></div>
+        </div>
+      </section>
+
+      <section className="section screen governance" id="governance">
+        <div className="wrap">
+          <div className="section-head wide"><span className="eyebrow">10 · ОТВЕТСТВЕННОСТЬ И ГРАНИЦЫ</span><h2>Сильное решение требует<br/><em>видимых ограничений.</em></h2></div>
+          <div className="role-map">
+            <article><span>01</span><h3>Спонсор</h3><p>Бюджет и решения после этапов.</p></article>
+            <article><span>02</span><h3>Руководитель проекта</h3><p>Никита Осипов — сроки, координация и принятие изменений.</p></article>
+            <article><span>03</span><h3>Главный бухгалтер</h3><p>Корректность учёта и владение процессом.</p></article>
+            <article><span>04</span><h3>ИТ / 1С + KULBATSKII</h3><p>Выгрузки, аналитика и архитектура решения.</p></article>
+            <article><span>05</span><h3>ИБ и юрист</h3><p>Допустимость обработки данных.</p></article>
           </div>
-          <div className="audit-offer">
-            <div className="audit-offer-main">
-              <span>ФИКСИРОВАННЫЙ КОНТУР</span>
-              <strong>AED 45 000</strong>
-              <p>8 недель · менее 1% годового ФОТ бухгалтерии</p>
-              <a href="#decision">Зафиксировать старт <span>→</span></a>
-            </div>
-            <div className="audit-workplan">
-              <article><span>01 · НЕД 1–2</span><h3>Подключение</h3><p>Контур данных, интервью, правила приватности и добровольцы для task mining.</p></article>
-              <article><span>02 · НЕД 2–6</span><h3>Измерение</h3><p>Журналы 1С, объёмы, часы, ошибки и карта фактической стоимости процессов.</p></article>
-              <article><span>03 · НЕД 6–8</span><h3>Синтез</h3><p>Приоритеты, финмодель, обоснование пилота и защита решения перед руководством.</p></article>
-            </div>
-          </div>
-          <p className="audit-price-note">Нагрузка на команду ограничена: ИТ помогает с выгрузками, владельцы процессов участвуют в коротких интервью, наблюдение проводится только с добровольцами.</p>
-          <div className="audit-credit"><div><span>ЗАЧЁТ В ПИЛОТ</span><strong>100%</strong><small>полная стоимость аудита</small></div><div><h3>Продолжаете — аудит бесплатен.</h3><p>Вся стоимость засчитывается в пилот. Останавливаетесь — у Gulf Bridge остаются карта затрат, baseline и обоснованное решение, ценные сами по себе.</p></div></div>
-          <p className="audit-limit"><b>Граница продукта:</b> внедрение и лицензии в аудит не входят. Мы не обещаем ROI до измерения — мы создаём данные, на которых его можно честно посчитать.</p>
+          <div className="control-strip">{controls.map(control => <span key={control}>{control}</span>)}</div>
+          <div className="scope-boundary"><div><span>ВХОДИТ В АУДИТ</span><p>Измерение, карта процессов, стоимость рутины, приоритеты и обоснование пилота.</p></div><div><span>НЕ ВХОДИТ В АУДИТ</span><p>Лицензии, изменение конфигураций 1С и промышленное внедрение.</p></div></div>
         </div>
       </section>
 
-      <section className="section paper" id="pilot">
+      <section className="decision screen" id="decision">
         <div className="wrap">
-          <div className="section-head"><span className="eyebrow">08 · РЕКОМЕНДУЕМЫЙ ПИЛОТ</span><h2>Предварительный <em>кандидат</em></h2></div>
-          <div className="candidate-grid pilot-candidates">
-            <article className="primary-candidate"><span>ОСНОВНОЙ КАНДИДАТ</span><h3>Ввод первички + e-invoicing</h3><p>Самый массовый ручной труд: большой поток, повторяемые типы документов и измеримый результат. Публичный ориентир: ввод 50 счетов — с 3 часов до ~25 минут.</p><strong>3 ч <i>→</i> ~25 мин</strong></article>
-            <article className="reserve-candidate"><span>РЕЗЕРВНЫЙ КАНДИДАТ</span><h3>Банк или сверки</h3><p>Ежедневный объём и стабильные правила сопоставления. Окончательный выбор — только по данным обследования.</p></article>
-          </div>
-          <div className="pilot-scope" aria-label="Контур пилота"><span><b>1</b> процесс</span><span><b>1</b> участок</span><span><b>3–5</b> бухгалтеров</span><span><b>9</b> недель</span><span>полное закрытие месяца</span><span>подтверждение человеком</span></div>
-          <p className="quick-win">Параллельно: включаем доступные штатные функции 1С и готовим контур клиентских компаний к обязательному e-invoicing в ОАЭ в 2027 году.</p>
+          <span className="eyebrow">11 · РЕШЕНИЕ РУКОВОДСТВА</span>
+          <h2>Чтобы получить ответ через 8 недель,<br/><em>сегодня нужны четыре решения.</em></h2>
+          <div className="decision-grid"><article><span>01</span><div><h3>Спонсор</h3><p>Человек с правом принимать решение после аудита.</p></div></article><article><span>02</span><div><h3>Бюджет</h3><p>AED 45 000 на фиксированный контур.</p></div></article><article><span>03</span><div><h3>Доступ</h3><p>Согласованные выгрузки 1С и рабочая группа.</p></div></article><article><span>04</span><div><h3>Дата</h3><p>Зафиксированный день представления результата.</p></div></article></div>
+          <div className="decision-action"><a className="btn primary" href="mailto:apk181818@gmail.com?subject=Зафиксировать%20старт%20аудита">Зафиксировать старт аудита <span>→</span></a><p>Результат этапа — не автоматизация, а точное основание для следующего решения.</p></div>
         </div>
       </section>
 
-      <section className="section" id="kpi">
-        <div className="wrap">
-          <div className="section-head"><span className="eyebrow">09 · МЕТРИКИ ПИЛОТА</span><h2>Успех измерим <em>заранее</em></h2><p>Пороговые значения утверждаются на Gate 1 после baseline и тестовой выборки. Замеры — еженедельно, против контрольного периода.</p></div>
-          <div className="metric-grid">
-            <article><strong>≥70–80%</strong><p>типовых документов создаются автоматически (STP)</p></article>
-            <article><strong>≥90–95%</strong><p>критичных полей распознаны корректно</p></article>
-            <article><strong>−30%+</strong><p>ручного времени на документ</p></article>
-            <article><strong>≤ baseline</strong><p>ошибки после проведения — не выросли</p></article>
-            <article><strong>AED / док</strong><p>стоимость обработки — в рамках бизнес-кейса</p></article>
-            <article><strong>0</strong><p>критических инцидентов ИБ и учёта</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section className="section paper" id="economy">
-        <div className="wrap">
-          <div className="section-head"><span className="eyebrow">10 · ЭКОНОМИКА</span><h2>Три уровня эффекта. <em>Часы ≠ деньги, пока не реализованы.</em></h2></div>
-          <div className="economy-growth">
-            <div><span>ГЛАВНАЯ ЭКОНОМИКА</span><strong>×2–3</strong><p>потенциал роста числа юрлиц на бухгалтера без пропорционального найма</p></div>
-            <p>Ценность создаётся не сокращением команды, а ростом обслуживаемого портфеля. Освобождённые часы становятся экономическим эффектом только тогда, когда превращаются в новые клиентские компании, меньшие переработки или отказ от дополнительного найма.</p>
-          </div>
-          <div className="effect-levels"><article><span>УРОВЕНЬ 1</span><h3>Операционный</h3><p>Часы, скорость обработки, ошибки и возвраты.</p></article><article><span>УРОВЕНЬ 2</span><h3>Мощность</h3><p>Юрлица на бухгалтера и пропускная способность команды.</p></article><article><span>УРОВЕНЬ 3</span><h3>Реализованный</h3><p>Новые клиенты без найма, меньше переработок, управляемый рост маржи.</p></article></div>
-          <p className="economy-note">Аудит фиксирует baseline на Gate 1, пилот подтверждает эффект на Gate 2. Точный ROI до измерения не обещаем.</p>
-        </div>
-      </section>
-
-      <section className="section" id="roadmap">
-        <div className="wrap">
-          <div className="section-head"><span className="eyebrow">11 · ДОРОЖНАЯ КАРТА</span><h2>Аудит, пилот, <em>масштаб</em></h2></div>
-          <div className="phase-strip product-roadmap" aria-label="Этапы дорожной карты">{phases.map(([phase,time], index) => <div className={phase === "G1" || phase === "G2" ? "gate-phase" : ""} key={phase}><small>{String(index + 1).padStart(2,"0")}</small><b>{phase}</b><span>{time || "КОНТРОЛЬНАЯ ТОЧКА"}</span></div>)}</div>
-          <div className="gate-grid"><article><span>GATE 1 · ПОСЛЕ 8 НЕДЕЛЬ</span><h3>Одобрение пилота</h3><p>Решение на фактических данных. При продолжении 100% стоимости аудита засчитывается в пилот.</p></article><article><span>GATE 2 · ПОСЛЕ 9 НЕДЕЛЬ ПИЛОТА</span><h3>Решение о масштабировании</h3><p>На цифрах пилота. Волны: первичка → банк и сверки → интеграции → ИИ с контролем человека.</p></article></div>
-        </div>
-      </section>
-
-      <section className="section paper" id="risks">
-        <div className="wrap">
-          <div className="section-head"><span className="eyebrow">12 · КОНТРОЛЬ РИСКОВ</span><h2>Пять главных рисков — <em>и что с каждым делаем</em></h2></div>
-          <div className="risk-list">
-            <article><span>01</span><div><h3>Качество данных</h3><p>Профиль качества и ручная валидация до выбора пилота</p></div><b>контроль</b></article>
-            <article><span>02</span><div><h3>Корректность учёта</h3><p>Человек подтверждает каждый документ; контрольные процедуры методолога</p></div><b>контроль</b></article>
-            <article><span>03</span><div><h3>ИБ и персональные данные</h3><p>UAE PDPL, обезличивание, минимизация данных и закрытый контур при необходимости</p></div><b>контроль</b></article>
-            <article><span>04</span><div><h3>Принятие сотрудниками</h3><p>Коммуникация с первого дня, добровольцы, лидеры участков в команде</p></div><b>наблюдаем</b></article>
-            <article><span>05</span><div><h3>Нереализованный экономический эффект</h3><p>План роста клиентского портфеля, найма и переработок утверждается на Gate 2</p></div><b>наблюдаем</b></article>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" id="team">
-        <div className="wrap">
-          <div className="section-head"><span className="eyebrow">13 · УПРАВЛЕНИЕ ПРОЕКТОМ</span><h2>Команда проекта, <em>роли и загрузка</em></h2></div>
-          <div className="team-list">
-            <article><span>01</span><div><h3>Спонсор · владелец эффекта</h3><p>Финансовый директор — решения на gates, бюджет, реализация эффекта</p></div><b>решения</b></article>
-            <article><span>02</span><div><h3>Руководитель проекта · лидер изменений</h3><p>Никита Осипов — сроки, координация, коммуникации и внедрение изменений</p></div><b>~50% времени</b></article>
-            <article><span>03</span><div><h3>Совладелец результата · методолог</h3><p>Главный бухгалтер — изменение процесса, корректность учёта и принятие решения</p></div><b>4–8 ч/нед</b></article>
-            <article><span>04</span><div><h3>Лидеры участков</h3><p>2–3 бухгалтера — требования, тестирование, «адвокаты» проекта</p></div><b>4–8 ч/нед</b></article>
-            <article><span>05</span><div><h3>ИТ / 1С + аналитик данных</h3><p>Штатный специалист и KULBATSKII — выгрузки, ETL, baseline и аналитика</p></div><b>по фазам</b></article>
-            <article><span>06</span><div><h3>ИБ и юрист</h3><p>Привлекаются на Фазу 0 и приёмки — допустимость обработки данных</p></div><b>точечно</b></article>
-          </div>
-        </div>
-      </section>
-
-      <section className="decision" id="decision">
-        <div className="wrap">
-          <span className="eyebrow">РЕШЕНИЕ · СТАРТ АУДИТА</span><h2>Зафиксировать старт <em>и контур ответственности</em></h2>
-          <div className="approval-grid"><div><span>01</span><p>Спонсора с правом решения</p></div><div><span>02</span><p>Бюджет аудита AED 45 000</p></div><div><span>03</span><p>Доступ к данным 1С и Excel</p></div><div><span>04</span><p>Правила данных и добровольцев</p></div><div><span>05</span><p>Бюджетный предел пилота</p></div><div><span>06</span><p>Дату Gate 1 через 8 недель</p></div></div>
-          <p className="decision-copy">Продолжаете в пилот — 100% стоимости аудита засчитывается. Останавливаетесь — у Gulf Bridge остаются карта затрат, baseline и обоснованное решение.</p>
-          <a className="btn primary audit-cta" href="mailto:apk181818@gmail.com?subject=Обсудить%20аудит%20стоимости%20рутины">Обсудить аудит</a>
-        </div>
-      </section>
-
-      <footer><div className="wrap"><div className="brand"><strong>KULBATSKII</strong><span>АВТОМАТИЗАЦИЯ БУХГАЛТЕРИИ</span></div><p>Никита Осипов · Gulf Bridge · 2026</p><a href="#top">Наверх ↑</a></div></footer>
-      <nav className="mobile-nav" aria-label="Быстрая навигация"><a href="#problem">Проблема</a><a href="#audit">Аудит</a><a href="#pilot">Пилот</a><a className="decision-link" href="#decision">Старт</a></nav>
+      <footer><div className="wrap"><div className="brand"><strong>KULBATSKII</strong><span>GULF BRIDGE</span></div><p>Никита Осипов · 2026</p><a href="#top">Наверх ↑</a></div></footer>
+      <nav className="mobile-nav" aria-label="Быстрая навигация"><a href="#offer">Аудит</a><a href="#route">Маршрут</a><a href="#pilot">Пилот</a><a className="decision-link" href="#decision">Старт</a></nav>
     </main>
   );
 }
