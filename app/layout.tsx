@@ -7,14 +7,14 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = requestHeaders.get("host") ?? "localhost:3000";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const ogImage = `${protocol}://${host}/og-no-glow-v2.png`;
-  const title = "Аудит стоимости ручных операций · Gulf Bridge";
-  const description = "За 8 недель определим стоимость бухгалтерской рутины, выберем процесс для пилота и подготовим основание для решения руководства.";
+  const title = "Автоматизация бухгалтерии · KULBATSKII";
+  const description = "Gulf Bridge: аудит стоимости бухгалтерской рутины, подготовка к e-invoicing 2027 и рост клиентского портфеля без пропорционального найма.";
 
   return {
     title,
     description,
     icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
-    openGraph: { title, description, type: "website", locale: "ru_RU", images: [{ url: ogImage, width: 1200, height: 630, alt: "Gulf Bridge — сначала измерить, затем решить" }] },
+    openGraph: { title, description, type: "website", locale: "ru_RU", images: [{ url: ogImage, width: 1200, height: 630, alt: "Gulf Bridge — аудит стоимости бухгалтерской рутины" }] },
     twitter: { card: "summary_large_image", title, description, images: [ogImage] },
   };
 }
