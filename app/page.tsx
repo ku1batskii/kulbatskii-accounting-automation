@@ -31,8 +31,8 @@ export default function Home() {
         <div className="wrap hero-inner">
           <span className="eyebrow line">АУДИТ СТОИМОСТИ РУЧНЫХ ОПЕРАЦИЙ</span>
           <div className="hero-statement">
-            <h1>Рост упирается<br/>в ручную работу.<em>Но мы ещё не знаем — в какую именно.</em></h1>
-            <p>30 бухгалтеров ведут 300+ клиентских компаний. Прежде чем покупать автоматизацию, нужно определить стоимость ручных операций и процесс, который целесообразно менять первым.</p>
+            <h1>Рост всё сильнее зависит<br/>от ручной работы.<em>Её влияние на процессы пока не измерено.</em></h1>
+            <p>30 бухгалтеров ведут 300+ клиентских компаний. До выбора автоматизации важно определить стоимость ручных операций и процесс, изменение которого даст наиболее обоснованный результат.</p>
           </div>
           <div className="hero-close"><strong>Сначала измерить.<br/>Затем решить.</strong><a className="btn primary" href="#current">Получить точный ответ <span>↓</span></a></div>
         </div>
@@ -40,7 +40,7 @@ export default function Home() {
 
       <section className="section paper screen current" id="current">
         <div className="wrap split-stage">
-          <div className="section-head"><span className="eyebrow">01 · ТЕКУЩИЙ КОНТУР</span><h2>Операции распределены.<br/><em>Стоимость — нет.</em></h2></div>
+          <div className="section-head"><span className="eyebrow">01 · ТЕКУЩИЙ КОНТУР</span><h2>Операции распределены<br/><em>между системами и людьми.</em></h2><p className="head-note">Их совокупная стоимость пока не выделена.</p></div>
           <div className="current-map">
             <div className="system-chain"><span>1С</span><i>→</i><span>Excel</span><i>→</i><span>Почта</span><i>→</i><span>Ручное согласование</span></div>
             <div className="current-facts">
@@ -62,19 +62,19 @@ export default function Home() {
       <section className="section screen offer" id="offer">
         <div className="wrap">
           <span className="eyebrow">03 · ПРЕДЛОЖЕНИЕ</span>
-          <div className="offer-title"><h2><em>AED 45 000</em><br/>за управленческую определённость.</h2><p>8 недель · фиксированный контур · результат пригоден для решения руководства</p></div>
+          <div className="offer-title"><h2>Аудит за <em>AED 45 000</em><br/>создаёт основу для решения.</h2><p>8 недель · фиксированный контур · результат пригоден для решения руководства</p></div>
           <div className="offer-results">
             <article><span>01</span><h3>Стоимость</h3><p>Сколько AED в год поглощают ручные операции.</p></article>
             <article><span>02</span><h3>Приоритет</h3><p>Какой процесс имеет лучшее соотношение эффекта, сложности и риска.</p></article>
             <article><span>03</span><h3>Решение</h3><p>Стоит ли запускать пилот и по каким показателям его принимать.</p></article>
           </div>
-          <div className="credit-statement"><p>При запуске пилота <strong>AED 45 000 полностью входят в его бюджет.</strong></p><b>Продолжение не обязательно.<br/>Обоснованное решение — обязательно.</b></div>
+          <div className="credit-statement"><p>При запуске пилота <strong>AED 45 000 полностью входят в его бюджет.</strong></p><b>Продолжение становится отдельным решением, основанным на результатах аудита.</b></div>
         </div>
       </section>
 
       <section className="section paper screen scope" id="scope">
         <div className="wrap">
-          <div className="section-head wide"><span className="eyebrow">04 · ОХВАТ</span><h2>Не «бухгалтерия вообще».<br/><em>Шесть измеримых участков.</em></h2></div>
+          <div className="section-head wide"><span className="eyebrow">04 · ОХВАТ</span><h2>Контур охватывает<br/><em>шесть измеримых участков.</em></h2></div>
           <div className="process-contour">{processes.map(([n,title,text]) => <article key={n}><span>{n}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
           <p className="scope-note">Пилот выбирается из этого контура после измерения. Самый заметный процесс не обязательно окажется самым значимым.</p>
         </div>
@@ -86,7 +86,7 @@ export default function Home() {
           <div className="audit-route" aria-label="Пять шагов аудита">
             {auditSteps.map(([n,title,action,result]) => <article className="route-card" key={n}><span className="route-number">{n}</span><h3>{title}</h3><p>{action}</p><div><small>НА ВЫХОДЕ</small><strong>{result}</strong></div></article>)}
           </div>
-          <div className="solution-order"><span>ПРИНЦИП ВЫБОРА РЕШЕНИЯ</span><p>Устранить операцию → стандартизировать → использовать штатные функции → интегрировать → автоматизировать.</p><b>ИИ и RPA — не первый ответ.</b></div>
+          <div className="solution-order"><span>ПРИНЦИП ВЫБОРА РЕШЕНИЯ</span><p>Устранить операцию → стандартизировать → использовать штатные функции → интегрировать → автоматизировать.</p><b>ИИ и RPA рассматриваются после более простых вариантов.</b></div>
         </div>
       </section>
 
@@ -94,7 +94,7 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head wide"><span className="eyebrow">06 · РЕШЕНИЕ ПОСЛЕ АУДИТА</span><h2>Оба исхода<br/><em>сохраняют ценность.</em></h2></div>
           <div className="fork-grid">
-            <article><span>01</span><h3>Остановиться</h3><p>Карта затрат, исходные показатели и заключение остаются у Gulf Bridge.</p><b>Обязательств продолжать нет.</b></article>
+            <article><span>01</span><h3>Завершить этап</h3><p>Карта затрат, исходные показатели и заключение остаются у Gulf Bridge.</p><b>Работу можно завершить на результатах аудита.</b></article>
             <article><span>02</span><h3>Проверить на пилоте</h3><p>AED 45 000 входят в бюджет следующего этапа.</p><b>Новое решение — после новых данных.</b></article>
           </div>
         </div>
@@ -102,7 +102,7 @@ export default function Home() {
 
       <section className="section screen pilot" id="pilot">
         <div className="wrap">
-          <div className="section-head wide"><span className="eyebrow">07 · ПИЛОТ</span><h2>Не внедрение.<br/><em>Контролируемый эксперимент.</em></h2></div>
+          <div className="section-head wide"><span className="eyebrow">07 · ПИЛОТ</span><h2>Контролируемая проверка<br/><em>в рабочем контуре.</em></h2></div>
           <div className="pilot-frame">
             <div className="pilot-hypothesis"><span>РАБОЧАЯ ГИПОТЕЗА</span><h3>Первый кандидат — ввод первичных документов.</h3><p>Аудит может подтвердить его или заменить более сильным.</p></div>
             <div className="pilot-params"><div><strong>1</strong><span>процесс</span></div><div><strong>1</strong><span>участок</span></div><div><strong>3–5</strong><span>бухгалтеров</span></div><div><strong>9</strong><span>недель</span></div><div><strong>HITL</strong><span>подтверждение человеком</span></div><div><strong>Δ</strong><span>сравнение с исходным периодом</span></div></div>
@@ -112,15 +112,15 @@ export default function Home() {
 
       <section className="section screen metrics" id="metrics">
         <div className="wrap">
-          <div className="section-head wide"><span className="eyebrow">08 · КРИТЕРИИ</span><h2>Результат принимается<br/><em>не по впечатлению.</em></h2></div>
+          <div className="section-head wide"><span className="eyebrow">08 · КРИТЕРИИ</span><h2>Результат оценивается<br/><em>по согласованным показателям.</em></h2></div>
           <div className="metric-list">{pilotMetrics.map((metric,index) => <div key={metric}><span>{String(index+1).padStart(2,"0")}</span><p>{metric}</p></div>)}</div>
-          <p className="pilot-decision"><strong>Цифры подтверждаются — масштабируем.</strong><span>Не подтверждаются — останавливаемся.</span></p>
+          <p className="pilot-decision"><strong>Подтверждённые показатели формируют основание для масштабирования.</strong><span>В противном случае решение пересматривается.</span></p>
         </div>
       </section>
 
       <section className="section paper screen economy" id="economy">
         <div className="wrap">
-          <div className="section-head wide"><span className="eyebrow">09 · КОММЕРЧЕСКИЙ СМЫСЛ</span><h2>Освобождённые часы ничего не стоят,<br/><em>пока не превращены в рост.</em></h2></div>
+          <div className="section-head wide"><span className="eyebrow">09 · КОММЕРЧЕСКИЙ СМЫСЛ</span><h2>Экономический эффект возникает,<br/><em>когда время превращается в мощность.</em></h2></div>
           <div className="growth-chain"><div><span>01</span><b>Меньше ручных операций</b></div><i>→</i><div><span>02</span><b>Больше мощности команды</b></div><i>→</i><div><span>03</span><b>Больше клиентских компаний</b></div><i>→</i><div><span>04</span><b>Рост без пропорционального найма</b></div></div>
           <div className="growth-hypothesis"><span>ПРОВЕРЯЕМЫЙ СЦЕНАРИЙ</span><strong>×2–3</strong><p>Увеличить число обслуживаемых компаний на бухгалтера без пропорционального расширения команды. Это гипотеза, не прогноз.</p></div>
         </div>
