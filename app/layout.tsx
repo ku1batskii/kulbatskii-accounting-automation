@@ -8,13 +8,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const ogImage = `${protocol}://${host}/og-no-glow-v2.png`;
   const title = "Автоматизация бухгалтерии · KULBATSKII";
-  const description = "Управляемая программа автоматизации бухгалтерии: пилот, KPI, экономика и дорожная карта на 12 месяцев.";
+  const description = "Gulf Bridge: аудит стоимости бухгалтерской рутины, подготовка к e-invoicing 2027 и рост клиентского портфеля без пропорционального найма.";
 
   return {
     title,
     description,
     icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
-    openGraph: { title, description, type: "website", locale: "ru_RU", images: [{ url: ogImage, width: 1200, height: 630, alt: "Автоматизация бухгалтерии — убираем рутину, сохраняем контроль" }] },
+    openGraph: { title, description, type: "website", locale: "ru_RU", images: [{ url: ogImage, width: 1200, height: 630, alt: "Gulf Bridge — аудит стоимости бухгалтерской рутины" }] },
     twitter: { card: "summary_large_image", title, description, images: [ogImage] },
   };
 }
