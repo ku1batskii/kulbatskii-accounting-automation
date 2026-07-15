@@ -49,3 +49,63 @@
 @media(max-width:560px){.hero-ask{gap:12px;padding:17px 16px}.hero-ask a{justify-content:space-between;border-top:1px solid var(--line);padding-top:12px}.audit-offer-main{padding:26px 20px}.audit-offer-main strong{font-size:39px}.audit-workplan article{padding:22px 20px}.economy-growth>div,.economy-growth>p{padding:24px 20px}.economy-growth>p{font-size:16px}}
 @media(max-width:560px){.audit-outcomes{grid-template-columns:1fr}.audit-outcomes article{min-height:auto}.audit-package{padding:24px 20px}.audit-package>strong{font-size:40px}.audit-credit>div{padding:22px 20px}.audit-credit strong{font-size:48px}.audit-credit h3{font-size:23px}.phase-strip.product-roadmap{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.hero:before{animation:none}}
+
+/* Unified mobile presentation mode: readable at 320–560 px without desktop-sized type. */
+@media(max-width:560px){
+  :root{--gutter:16px;--mobile-type-scale:1}
+  body{font-size:15px;line-height:1.55}
+  h1,h2{line-height:1.12;letter-spacing:-.025em;text-wrap:wrap;overflow-wrap:break-word}
+  h1{font-size:clamp(32px,9.2vw,40px)}
+  h2{font-size:clamp(27px,7.8vw,34px)}
+  h3{font-size:18px;line-height:1.2}
+  .eyebrow{font-size:9px;line-height:1.45;letter-spacing:.09em}
+  .section{padding:56px 0}
+  .section-head{margin-bottom:28px}
+  .section-head h2{margin-top:12px}
+  .section-head p{margin-top:13px;font-size:15px;line-height:1.6}
+  .hero-inner{padding-top:44px;padding-bottom:26px}
+  .hero-copy{margin-top:16px}
+  .hero-copy h1{font-size:clamp(32px,9.2vw,40px)}
+  .hero-copy h1 br{display:none}
+  .hero-copy h1 em{margin-top:9px;font-size:.72em;line-height:1.18}
+  .hero-copy .lead{margin-top:16px;font-size:15px;line-height:1.55}
+  .hero-evidence{grid-template-columns:1fr;gap:7px;margin-top:20px}
+  .hero-evidence article,.hero-evidence article:first-child{grid-column:auto;min-height:68px;padding:12px 14px}
+  .hero-evidence strong{font-size:22px}
+  .hero-evidence span{font-size:8px}
+  .hero-ask{margin-top:12px;padding:15px 14px}
+  .problem-grid article,.routine-grid article,.source-grid article,.metric-grid article{padding:20px 18px}
+  .target-shifts article{padding:18px 12px 18px 38px}
+  .target-shifts article:before{top:18px}
+  .target-metrics article{padding:18px}
+  .target-metrics strong{font-size:30px}
+  .tech-step{padding:18px 8px}
+  .tech-step:hover{padding-left:10px}
+  .candidate-grid h3{font-size:21px}
+  .pilot-candidates .primary-candidate strong{font-size:26px}
+  .audit-offer-main strong{font-size:32px;white-space:normal}
+  .audit-credit strong{font-size:38px}
+  .audit-credit h3{font-size:20px}
+  .metric-grid strong{font-size:29px}
+  .economy-growth strong{font-size:50px}
+  .economy-growth>p{font-size:15px}
+  .effect-levels article{grid-template-columns:68px 1fr}
+  .phase-strip>div{grid-template-columns:32px 1fr;padding:14px}
+  .risk-list article,.team-list article{grid-template-columns:34px 1fr}
+  .risk-list h3,.team-list h3{font-size:17px}
+  .approval-grid>div{grid-template-columns:30px 1fr;padding:14px 10px}
+  .decision{padding:64px 0}
+  .decision .wrap>h2{font-size:clamp(27px,7.8vw,34px)}
+}
+
+@media(max-width:360px){
+  :root{--gutter:14px}
+  h1,.hero-copy h1{font-size:30px}
+  h2,.decision .wrap>h2{font-size:26px}
+  .nav-cta{font-size:11px}
+  .hero-evidence strong{font-size:20px}
+  .audit-offer-main strong{font-size:29px}
+  .pilot-scope{grid-template-columns:1fr}
+  .pilot-scope span,.pilot-scope span:nth-child(2n){border-right:0}
+  .pilot-scope span:nth-child(-n+5){border-bottom:1px solid var(--paper-line)}
+}
